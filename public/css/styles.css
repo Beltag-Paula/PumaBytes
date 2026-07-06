@@ -1,0 +1,195 @@
+:root {
+    --cl1: #0167E3;
+    /*primary*/
+    --cl2: #8afb04;
+    /*primary*/
+    --cl3: #F6D6E3;
+    /*candidate for fur*/
+    --cl4: #F9EAEF;
+    /*candidate for fur*/
+    --cl5: #B50066;
+    --cl6: #9E0059;
+    --cl7: #E60067;
+
+    --cchatgpt1: #0f172a;
+    --cchatgpt2: #111827;
+    --cchatgpt3: #1f2937;
+    --cchatgpt4: #334155;
+    --cchatgpt5: #e5e7eb;
+
+    --cl8: #fa8005;
+    --cl9: #ec4899;
+    --cl10: #f472b6;
+    --cl11: #fb923c;
+    --cl12: #f9a8d4;
+    --cl13: #db2777;
+
+    --cl14: linear-gradient(90deg, #fa8005, #ec4899);
+    --cl15: linear-gradient(90deg, #fb923c, #f472b6, #ec4899);
+
+    --cl16: #f05da8;
+    --cl17: #f268af;
+    /*winner for body background*/
+
+    --font1: "Cabal";
+    --font2: "Shifting-Comfort";
+    --font3: "Frozen-Sepulcher";
+    --font4: "Brickscrawl";
+    --font5: "Special-Holiday";
+    --font6: "Vtks-Honsa";
+    --font7: "Vtks-Sacoleta";
+    --font8: "Vtks-Troath";
+}
+
+
+@font-face {
+    font-family: "Cabal";
+    src: url("/fonts/cabal/cabal.ttf");
+}
+
+@font-face {
+    font-family: "Shifting-Comfort";
+    src: url("/fonts/shifting-comfort-demo/shifting-comfort-demo.otf");
+}
+
+@font-face {
+    font-family: "Frozen-Sepulcher";
+    src: url("/fonts/frozen-sepulcher/frozen-sepulcher.ttf");
+}
+
+@font-face {
+    font-family: "Brickscrawl";
+    src: url("/fonts/brickscrawl/brickscrawl.ttf");
+}
+
+@font-face {
+    font-family: "Special-Holiday";
+    src: url("/fonts/special-holiday/special-holiday.ttf");
+    src: url("/fonts/special-holiday/special-holiday.otf");
+}
+
+@font-face {
+    font-family: "Vtks-Honsa";
+    src: url("/fonts/vtks-honsa/vtks-honsa.ttf");
+}
+
+@font-face {
+    font-family: "Vtks-Sacoleta";
+    src: url("/fonts/vtks-sacoleta/vtks-sacoleta.ttf");
+}
+
+@font-face {
+    font-family: "Vtks-Troath";
+    src: url("/fonts/vtks-troath/vtks-troath.ttf");
+}
+
+* {
+    box-sizing: border-box;
+    font-family: var(--font1);
+    color: var(--cl1);
+}
+
+body {
+    margin: 0;
+    background: var(--cl17);
+}
+
+.finalClass {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-items: stretch;
+    align-content: stretch;
+    gap: 250px;
+}
+
+.final-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 80px;
+
+    flex-wrap: wrap;
+}
+
+
+.image-container {
+    flex: 1 1 440px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-container img {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    display: block;
+}
+
+
+.contact-form-container {
+    flex: 1 1 450px;
+
+    max-width: 550px;
+
+    background: var(--cl3);
+    padding: 25px;
+    border-radius: 30px;
+    border: 22px solid var(--cl1);
+}
+
+.contact-form-container h2 {
+    text-align: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 18px;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+
+    border: 3px solid var(--cl1);
+    border-radius: 12px;
+    font-size: 18px;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 12px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: var(--cl2);
+    cursor: pointer;
+}
+
+/* Mobile */
+
+@media (max-width: 900px) {
+
+    .final-container {
+        flex-direction: column;
+    }
+
+    .image-container,
+    .contact-form-container {
+        width: 100%;
+    }
+
+    .image-container img {
+        max-width: 350px;
+    }
+}

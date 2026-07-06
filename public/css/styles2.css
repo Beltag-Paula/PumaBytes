@@ -1,0 +1,125 @@
+:root {
+    --cl1: #0167E3;
+    /*primary*/
+    --cl2: #8afb04;
+    /*primary*/
+    --cl3: #F6D6E3;
+    /*candidate for fur*/
+    --cl4: #F9EAEF;
+    /*candidate for fur*/
+    --cl5: #B50066;
+    --cl6: #9E0059;
+    --cl7: #E60067;
+
+    --cchatgpt1: #0f172a;
+    --cchatgpt2: #111827;
+    --cchatgpt3: #1f2937;
+    --cchatgpt4: #334155;
+    --cchatgpt5: #e5e7eb;
+
+    --cl8: #fa8005;
+    --cl9: #ec4899;
+    --cl10: #f472b6;
+    --cl11: #fb923c;
+    --cl12: #f9a8d4;
+    --cl13: #db2777;
+
+    --cl14: linear-gradient(90deg, #fa8005, #ec4899);
+    --cl15: linear-gradient(90deg, #fb923c, #f472b6, #ec4899);
+
+    --cl16: #f05da8;
+    --cl17: #f268af;
+    /*winner for body background*/
+
+    --font1: "Cabal";
+    --font2: "Shifting-Comfort";
+    --font3: "Frozen-Sepulcher";
+    --font4: "Brickscrawl";
+    --font5: "Special-Holiday";
+    --font6: "Vtks-Honsa";
+    --font7: "Vtks-Sacoleta";
+    --font8: "Vtks-Troath";
+}
+
+
+@font-face {
+    font-family: "Cabal";
+    src: url("/fonts/cabal/cabal.ttf");
+}
+
+@font-face {
+    font-family: "Shifting-Comfort";
+    src: url("/fonts/shifting-comfort-demo/shifting-comfort-demo.otf");
+}
+
+@font-face {
+    font-family: "Frozen-Sepulcher";
+    src: url("/fonts/frozen-sepulcher/frozen-sepulcher.ttf");
+}
+
+@font-face {
+    font-family: "Brickscrawl";
+    src: url("/fonts/brickscrawl/brickscrawl.ttf");
+}
+
+@font-face {
+    font-family: "Special-Holiday";
+    src: url("/fonts/special-holiday/special-holiday.ttf");
+    src: url("/fonts/special-holiday/special-holiday.otf");
+}
+
+@font-face {
+    font-family: "Vtks-Honsa";
+    src: url("/fonts/vtks-honsa/vtks-honsa.ttf");
+}
+
+@font-face {
+    font-family: "Vtks-Sacoleta";
+    src: url("/fonts/vtks-sacoleta/vtks-sacoleta.ttf");
+}
+
+@font-face {
+    font-family: "Vtks-Troath";
+    src: url("/fonts/vtks-troath/vtks-troath.ttf");
+}
+
+* {
+    font-family: var(--font7);
+}
+
+body {
+    margin: 0;
+    background: var(--cl17)
+}
+
+h1 {
+    text-align: center;
+    color: var(--cchatgpt5);
+    font-weight: bold;
+    font-size: 600%;
+}
+
+.image-container {
+    width: 25%;
+    height: auto;
+}
+
+.finalClass {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-items: stretch;
+    align-content: stretch;
+    gap: 250px;
+}
+
+li {
+    list-style: none;
+    text-align: center;
+    text-indent: -0.5em;
+    color: var(--cchatgpt5);
+    font-weight: italic;
+    font-size: 300%;
+
+}
