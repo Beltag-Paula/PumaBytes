@@ -1,0 +1,57 @@
+<div class="mobile-nav-wrapper">
+    <!-- The Chunky Burger Toggle Button -->
+    <button class="burger-trigger" aria-label="Toggle Menu" aria-expanded="false">
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+        <span class="burger-bar"></span>
+    </button>
+
+    <!-- The Full-Screen Retro Pop-up Drawer -->
+    <nav class="mobile-drawer">
+        <div class="drawer-header">
+            <span>MENU.EXE</span>
+            <button class="drawer-close">&times;</button>
+        </div>
+        
+        <div class="drawer-content">
+            <div class="drawer-section">
+                <h3>// PROJECTS</h3>
+                <a href="https://www.youtube.com/@pumabytes" target="_blank" rel="noopener noreferrer">Click Me</a>
+                <a href="/project1">Project #1</a>
+                <a href="/project2">Project #2</a>
+                <a href="/project3">Project #3</a>
+                <a href="/project4">Project #4</a>
+                <a href="/project5">Project #5</a>
+            </div>
+            
+            <div class="drawer-section">
+                <h3>// NAVIGATION</h3>
+                <a href="/aboutme">About Me</a>
+                <a href="https://github.com/Beltag-Paula" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="/blog">Blog</a>
+                <a href="https://www.youtube.com/@pumabytes" target="_blank" rel="noopener noreferrer">YouTube</a>
+                <a href="https://www.linkedin.com/in/paula-beltag-6976781b8/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="/contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+</div>
+
+<script>
+    // Self-contained logic for the hamburger mechanics
+    document.addEventListener("DOMContentLoaded", () => {
+        const trigger = document.querySelector(".burger-trigger");
+        const closeBtn = document.querySelector(".drawer-close");
+        const drawer = document.querySelector(".mobile-drawer");
+
+        function toggleMenu() {
+            const isOpen = drawer.classList.toggle("is-open");
+            trigger.setAttribute("aria-expanded", isOpen);
+            // Prevents the background content from scrolling when menu is open
+            document.body.style.overflow = isOpen ? "hidden" : "";
+        }
+
+        trigger.addEventListener("click", toggleMenu);
+        closeBtn.addEventListener("click", toggleMenu);
+    });
+</script>

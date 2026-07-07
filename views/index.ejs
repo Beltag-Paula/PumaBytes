@@ -4,77 +4,53 @@
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Index page</title>
-        <link rel="stylesheet" href="/css/styles1.css">
+        <title><%= myTitle %></title>
+        <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body>
+
         <div class="finalClass">
-                <div class="headerClass"></div>
-                <div class="mainClass">
+                <div class="headerClass"><%- include('partials/hamburgerMenu') %></div>
+
+                <main class="mainClass">
                         <div class="firstColumn">
-                                <div id="project0">Click Me <a href="https://www.youtube.com/@pumabytes" target="_blank"
-                                                rel="noopener noreferrer"
-                                                style="position: absolute; inset: 0; z-index: 1;"></a>
-                                </div>
-                                <div id="project1">Project #1</div>
-                                <div id="project2">Project #2</div>
-                                <div id="project3">Project #3</div>
-                                <div id="project4">Project #4</div>
-                                <div id="project5">Project #5</div>
+                                <% projects.forEach(project=> { %>
+                                        <button class="indie-btn" id="<%= project.id %>"
+                                                data-preview="<%= project.img %>">
+                                                <a href="<%= project.url %>" <%=project.url.startsWith('http')
+                                                        ? 'target="_blank" rel="noopener noreferrer"' : '' %>>
+                                                        <%= project.title %>
+                                                </a>
+                                        </button>
+                                        <% }); %>
                         </div>
 
                         <div class="secondColumn">
                                 <h1>PumaBytes</h1>
-                                <div id="logo">
+                                <div id="logo-container">
                                         <img id="logo-img" src="/images/rawr3.png" alt="kitty logo">
-                                        <img id="previewImg" src="" alt="">
+                                        <img id="previewImg" src="" alt="Preview panel">
                                 </div>
-
-
-
                         </div>
-
                         <div class="thirdColumn">
-                                <div id="public0"> About Me
-                                        <a href="/aboutme" style="position: absolute; inset: 0; z-index: 1;">
-                                        </a>
-                                </div>
-                                <div id="public1">GitHub<a href="https://github.com/Beltag-Paula" target="_blank"
-                                                rel="noopener noreferrer"
-                                                style="position: absolute; inset: 0; z-index: 1;"></a>
-                                </div>
-                                <div id="public2">
-                                        Blog
-                                        <a href="/blog" style="position: absolute; inset: 0; z-index: 1;">
-                                        </a>
-
-                                </div>
-                                <div id="public3">Youtube<a href="https://www.youtube.com/@pumabytes" target="_blank"
-                                                rel="noopener noreferrer"
-                                                style="position: absolute; inset: 0; z-index: 1;"></a>
-                                </div>
-                                <div id="public4">LinkedIn<a href="https://www.linkedin.com/in/paula-beltag-6976781b8/"
-                                                target="_blank" rel="noopener noreferrer"
-                                                style="position: absolute; inset: 0; z-index: 1;"></a></div>
-                                <div id="public5">
-                                        Contact
-                                        <a href="/contact" style="position: absolute; inset: 0; z-index: 1;">
-                                        </a>
-                                </div>
-
+                                <% navigation.forEach(nav=> { %>
+                                        <button class="indie-btn" id="<%= nav.id %>" data-preview="<%= nav.img %>">
+                                                <a href="<%= nav.url %>" <%=nav.url.startsWith('http')
+                                                        ? 'target="_blank" rel="noopener noreferrer"' : '' %>>
+                                                        <%= nav.title %>
+                                                </a>
+                                        </button>
+                                        <% }); %>
                         </div>
+                </main>
 
-
-
-
+                <div class="footerClass">
+                        <%- include('partials/footer') %>
                 </div>
-                <div class="footerClass"></div>
         </div>
 
-
+        <script src="/js/index.js"></script>
 </body>
-
-<script src="/js/index.js"></script>
 
 </html>

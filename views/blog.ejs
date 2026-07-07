@@ -3,9 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title><%= myTitle %></title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
-    <h1>THIS IS THE BLOG</h1>
+
+    <div class="finalClass">
+        <div class="headerClass">
+            <%- include('partials/hamburgerMenu') %>
+        </div>
+
+        <main class="mainClass">
+        </main>
+
+        <div class="footerClass">
+            <%- include('partials/footer') %>
+        </div>
+    </div>
+
 </body>
 </html>

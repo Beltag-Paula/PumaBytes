@@ -1,0 +1,47 @@
+{   "index":{
+        "myTitle": "HomePage"
+    },
+
+    "contact":{
+        "myTitle": "ContactPage"
+    },
+
+    "blog":{
+        "myTitle": "BlogPage"
+    },
+
+    "projects": [
+    { "id": "project0", "title": "Click Me", "url": "https://youtube.com/@pumabytes", "img": "/images/kaka.png" },
+    { "id": "project1", "title": "Project #1", "url": "/project1", "img": "/images/project.png" },
+    { "id": "project2", "title": "Project #2", "url": "/project1", "img": "/images/project2.png" },
+    { "id": "project3", "title": "Project #3", "url": "/project1", "img": "/images/project3.png" },
+    { "id": "project4", "title": "Project #4", "url": "/project1", "img": "/images/project4.png" },
+    { "id": "project5", "title": "Project #5", "url": "/project1", "img": "/images/project5.png" }
+
+  ],
+  "navigation": [
+    { "id": "public0", "title": "About Me", "url": "/aboutme", "img": "/images/aboutme.png" },
+    { "id": "public1", "title": "GitHub", "url": "https://github.com/Beltag-Paula", "img": "/images/github.png" },
+    { "id": "public2", "title": "LinkedIn", "url": "https://www.linkedin.com/in/paula-beltag-6976781b8/", "img": "/images/linkedin.png"},
+    { "id": "public3", "title": "Youtube", "url": "https://youtube.com/@pumabytes", "img": "/images/youtube.png"},
+    { "id": "public4", "title": "Blog", "url": "/blog", "img": "/images/blog.png" },
+    { "id": "public5", "title": "Contact", "url": "/contact", "img": "/images/contact.png" }
+  ],
+    "about":{
+        "myTitle": "About",
+        "myIntro": "Hi, I'm PumaBytes, the new cat in tech town",
+        "myText" : [
+       "My journey into tech started with the rigid theory of C/C++ and Java in university.",
+       "Back then, programming felt less like a creative outlet and more like an academic obligation.",
+       "After graduating, I chose to reset my perspective.",
+       "I stripped away the coursework and dove into Python and JavaScript on my own terms. ",
+       "That's when everything clicked.",
+       "JavaScript instantly became my primary language. It's fast, flexible, and perfectly suited for the types of architectures I love to build.",
+       "I build with vanilla HTML, CSS, JavaScript, and Node.js (Express).",
+       "While the industry rushes to adopt heavy, bloated frameworks, I choose to master the core fundamentals first.",
+       "I write lightweight, efficient code because I care about understanding exactly how software works under the hood.",
+       "For me, tools like AI aren't a threat or a shortcut—they are a force multiplier for rapid learning, experimentation, and debugging. ",
+       "I thrive on breaking things, fixing them, and building fast.",
+       "When I’m away from the keyboard, I’m usually hanging out with my two cats, gaming, reading, or sketching."]
+    }
+}

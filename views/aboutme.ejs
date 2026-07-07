@@ -1,61 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%= myTitle %>
-    </title>
-    <link rel="stylesheet" href="/css/styles2.css">
+    <title><%= myTitle %></title>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
-
 <body>
+
     <div class="finalClass">
-
         <div class="headerClass">
-            <nav id="navigation">
-                <input type="checkbox" id="hamburger-toggle" aria-label="hamburger" aria-controls="menu"
-                    aria-expanded="false" />
-                <label for="hamburger-toggle" id="hamburger" aria-hidden="true">
-                    <span class="slice"></span>
-                    <span class="slice"></span>
-                    <span class="slice"></span>
-                </label>
-
-                <ul id="menu">
-                    <li><a href="#">Menu Item 1</a></li>
-                    <li><a href="#">Menu Item 2</a></li>
-                    <li><a href="#">Menu Item 3</a></li>
-                </ul>
-            </nav>
+            <%- include('partials/hamburgerMenu') %>
         </div>
-        <div class="mainClass">
+
+        <main class="mainClass about-main">
             <div class="image-container">
-                <img src="/images/rawraboutme.png" alt="kitty hunting you">
+                <img src="/images/rawrcontact.png" alt="kitty hunting you" id="about-img">
             </div>
+
             <div class="textClass">
-                <h1>
-                    <%= myIntro %>
-                </h1>
-
-                <ul>
-                    <% myText.forEach(item=> { %>
-                        <li>
-                            <br>
-                            <%= item %>
-                                <br>
-                        </li>
-                        <% }); %>
-                </ul>
+                <h1 class="about-heading"><%= myIntro %></h1>
+                
+                <div class="about-story">
+                    <% myText.forEach(paragraph => { %>
+                        <p class="story-p"><%= paragraph %></p>
+                    <% }); %>
+                </div>
             </div>
+        </main>
 
-
-
+        <div class="footerClass">
+            <%- include('partials/footer') %>
         </div>
-        <div class="footerClass"></div>
     </div>
-</body>
 
+</body>
 </html>
-</div>

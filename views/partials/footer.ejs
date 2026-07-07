@@ -1,1 +1,20 @@
-<h2>LALALLALALLA</h2>
+<footer class="indie-footer">
+    <div class="footer-left">
+        <span class="status-dot"></span>
+        <p>System Status: <span class="status-text">Fully Operational</span></p>
+    </div>
+
+    <div class="footer-center">
+        <p>Built with Vanilla JS & Strong Coffee © <span id="year"></span> PumaBytes alias(<%= realName %>)</p>
+    </div>
+
+    <div class="footer-right">
+        <p class="visitor-counter">
+            PORTOFOLIO_VERSION <%= packageVersion %>
+        </p>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
