@@ -11,12 +11,12 @@
     },
 
     "projects": [
-    { "id": "project0", "title": "Click Me", "url": "https://youtube.com/@pumabytes", "img": "/images/kaka.png" },
-    { "id": "project1", "title": "Project #1", "url": "/project1", "img": "/images/project.png" },
-    { "id": "project2", "title": "Project #2", "url": "/project1", "img": "/images/project2.png" },
-    { "id": "project3", "title": "Project #3", "url": "/project1", "img": "/images/project3.png" },
-    { "id": "project4", "title": "Project #4", "url": "/project1", "img": "/images/project4.png" },
-    { "id": "project5", "title": "Project #5", "url": "/project1", "img": "/images/project5.png" }
+    { "id": "project0", "title": "Project #1", "url": "https://youtube.com/@pumabytes", "img": "/images/kaka.png" },
+    { "id": "project1", "title": "Project #2", "url": "/project1", "img": "/images/project.png" },
+    { "id": "project2", "title": "Project #3", "url": "/project1", "img": "/images/project2.png" },
+    { "id": "project3", "title": "Project #4", "url": "/project1", "img": "/images/project3.png" },
+    { "id": "project4", "title": "Project #5", "url": "/project1", "img": "/images/project4.png" },
+    { "id": "project5", "title": "Click Me", "url": "/project1", "img": "/images/project5.png" }
 
   ],
   "navigation": [
@@ -43,5 +43,11 @@
        "For me, tools like AI aren't a threat or a shortcut—they are a force multiplier for rapid learning, experimentation, and debugging. ",
        "I thrive on breaking things, fixing them, and building fast.",
        "When I’m away from the keyboard, I’m usually hanging out with my two cats, gaming, reading, or sketching."]
-    }
+    },
+
+"successMessage": {
+    "myTitle": "Title",
+    "myMessage": "Message sent successfully. Click the arrow to return to the Home page.",
+    "img": "/images/arrrow.png"
+}
 }

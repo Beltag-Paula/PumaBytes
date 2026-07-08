@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= myTitle %>
+    </title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <div class="finalClass">
+        <div class="headerClass">
+            <%- include('partials/hamburgerMenu') %>
+        </div>
+
+        <main class="mainClass success-main">
+            <div class="success-container">
+                <h1>
+                    <%= myMessage %>
+                </h1>
+
+                <a href="/" class="home-arrow">
+                    <img src="<%= img %>" alt="Back to Home">
+                </a>
+            </div>
+        </main>
+
+        <div class="footerClass">
+            <%- include('partials/footer') %>
+        </div>
+    </div>
+
+</body>
+
+</html>
