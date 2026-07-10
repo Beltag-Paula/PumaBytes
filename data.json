@@ -16,7 +16,7 @@
     { "id": "project2", "title": "Project #3", "url": "/project1", "img": "/images/project2.png" },
     { "id": "project3", "title": "Project #4", "url": "/project1", "img": "/images/project3.png" },
     { "id": "project4", "title": "Project #5", "url": "/project1", "img": "/images/project4.png" },
-    { "id": "project5", "title": "Click Me", "url": "/project1", "img": "/images/project5.png" }
+    { "id": "project5", "title": "Project #6", "url": "/project1", "img": "/images/project5.png" }
 
   ],
   "navigation": [

@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= myTitle %></title>
+    <title>
+        <%= myTitle %>
+    </title>
 
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/modal.css">
@@ -12,138 +14,127 @@
 
 <body>
 
-<div class="finalClass">
+    <div class="finalClass">
 
-    <div class="headerClass">
-        <%- include('partials/hamburgerMenu') %>
-    </div>
-
-    <main class="mainClass">
-
-        <div class="firstColumn">
-
-            <% projects.forEach((project,index)=> { %>
-
-                <% const repo = repos[index]; %>
-
-                <button
-                    class="indie-btn project-btn"
-
-                    data-preview="<%= project.img %>"
-                    data-title="<%= repo ? repo.name : project.title %>"
-                    data-description="<%= repo ? repo.description : '' %>"
-                    data-live="<%= repo ? repo.live_code_url : '' %>"
-                    data-github="<%= repo ? repo.repo_url : '' %>">
-
-                    <%= project.title %>
-
-                </button>
-
-            <% }) %>
-
+        <div class="headerClass">
+            <%- include('partials/hamburgerMenu') %>
         </div>
 
-        <div class="secondColumn">
+        <main class="mainClass">
 
-            <h1>PumaBytes</h1>
+            <div class="firstColumn">
 
-            <div id="logo-container">
+                <% projects.forEach((project,index)=> { %>
 
-                <img
-                    id="logo-img"
-                    src="/images/rawr3.png"
-                    alt="kitty logo">
+                    <% const repo=repos[index]; %>
 
-                <img
-                    id="previewImg"
-                    src=""
-                    alt="Preview">
+                        <button class="indie-btn project-btn" data-preview="<%= project.img %>"
+                            data-title="<%= repo ? repo.name : project.title %>"
+                            data-description="<%= repo ? repo.description : '' %>"
+                            data-live="<%= repo ? repo.live_code_url : '' %>"
+                            data-github="<%= repo ? repo.repo_url : '' %>"
+                            data-images='<%- JSON.stringify(repo ? repo.images : []) %>'>
+
+                            <%= project.title %>
+
+                        </button>
+
+                        <% }) %>
+
+            </div>
+
+            <div class="secondColumn">
+
+                <h1>PumaBytes</h1>
+
+                <div id="logo-container">
+
+                    <img id="logo-img" src="/images/rawr3.png" alt="kitty logo">
+
+                    <img id="previewImg" src="" alt="Preview">
+
+                </div>
+
+            </div>
+
+            <div class="thirdColumn">
+
+                <% navigation.forEach(nav=> { %>
+
+                    <button class="indie-btn" id="<%= nav.id %>" data-preview="<%= nav.img %>">
+
+                        <a href="<%= nav.url %>" <%=nav.url.startsWith('http')
+                            ? 'target="_blank" rel="noopener noreferrer"' : '' %>>
+
+                            <%= nav.title %>
+
+                        </a>
+
+                    </button>
+
+                    <% }) %>
+
+            </div>
+
+        </main>
+
+        <div class="footerClass">
+            <%- include('partials/footer') %>
+        </div>
+
+    </div>
+
+
+     <!-- ========================= -->
+    <!-- PROJECT MODAL -->
+    <!-- ========================= -->
+
+    <div id="projectModal" class="project-modal hidden">
+
+        <div class="project-modal-card">
+
+            <button id="closeModal" class="project-modal-close">
+                ✕
+            </button>
+
+            <h2 id="modalTitle"></h2>
+
+            <p id="modalDescription"></p>
+
+            <div id="modalGallery" class="modal-gallery"></div>
+
+            <div class="project-modal-actions">
+
+                <a id="liveButton" class="modal-button" target="_blank">
+                    Live Demo
+                </a>
+
+                <a id="githubButton" class="modal-button" target="_blank">
+                    GitHub
+                </a>
 
             </div>
 
         </div>
 
-        <div class="thirdColumn">
-
-            <% navigation.forEach(nav => { %>
-
-                <button
-                    class="indie-btn"
-                    id="<%= nav.id %>"
-                    data-preview="<%= nav.img %>">
-
-                    <a
-                        href="<%= nav.url %>"
-                        <%= nav.url.startsWith('http')
-                            ? 'target="_blank" rel="noopener noreferrer"'
-                            : '' %>>
-
-                        <%= nav.title %>
-
-                    </a>
-
-                </button>
-
-            <% }) %>
-
-        </div>
-
-    </main>
-
-    <div class="footerClass">
-        <%- include('partials/footer') %>
     </div>
 
-</div>
+    <!-- ========================= -->
+    <!-- IMAGE LIGHTBOX -->
+    <!-- ========================= -->
 
+    <div id="imageLightbox" class="image-lightbox hidden">
 
-<!-- ========================= -->
-<!-- PROJECT MODAL -->
-<!-- ========================= -->
-
-<div id="projectModal" class="project-modal hidden">
-
-    <div class="project-modal-card">
-
-        <button
-            id="closeModal"
-            class="project-modal-close">
-
+        <button id="closeLightbox" class="lightbox-close">
             ✕
-
         </button>
 
-        <h2 id="modalTitle"></h2>
-
-        <p id="modalDescription"></p>
-
-        <div class="project-modal-actions">
-
-            <a
-                id="liveButton"
-                class="modal-button"
-                target="_blank">
-
-                Live Demo
-
-            </a>
-
-            <a
-                id="githubButton"
-                class="modal-button"
-                target="_blank">
-
-                GitHub
-
-            </a>
-
-        </div>
+        <img id="lightboxImage" src="" alt="Project screenshot">
 
     </div>
 
-</div>
-
-<script src="/js/index.js"></script>
+    <script src="/js/index.js"></script>
 
 </body>
+
 </html>
