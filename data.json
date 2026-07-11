@@ -27,24 +27,73 @@
     { "id": "public4", "title": "Blog", "url": "/blog", "img": "/images/blog.png" },
     { "id": "public5", "title": "Contact", "url": "/contact", "img": "/images/contact.png" }
   ],
-    "about":{
-        "myTitle": "About",
-        "myIntro": "Hi, I'm PumaBytes, the new cat in tech town",
-        "myText" : [
-       "My journey into tech started with the rigid theory of C/C++ and Java in university.",
-       "Back then, programming felt less like a creative outlet and more like an academic obligation.",
-       "After graduating, I chose to reset my perspective.",
-       "I stripped away the coursework and dove into Python and JavaScript on my own terms. ",
-       "That's when everything clicked.",
-       "JavaScript instantly became my primary language. It's fast, flexible, and perfectly suited for the types of architectures I love to build.",
-       "I build with vanilla HTML, CSS, JavaScript, and Node.js (Express).",
-       "While the industry rushes to adopt heavy, bloated frameworks, I choose to master the core fundamentals first.",
-       "I write lightweight, efficient code because I care about understanding exactly how software works under the hood.",
-       "For me, tools like AI aren't a threat or a shortcut—they are a force multiplier for rapid learning, experimentation, and debugging. ",
-       "I thrive on breaking things, fixing them, and building fast.",
-       "When I’m away from the keyboard, I’m usually hanging out with my two cats, gaming, reading, or sketching."]
-    },
+"about": {
+  "myTitle": "About",
+  "myIntro": "Hi, I'm PumaBytes, the new cat in tech town",
 
+  "myText": [
+    {
+      "text":"My journey into tech started with the rigid theory of C/C++ and Java in university.",
+      "image": "arrow.png",
+      "alt": "University"
+    },
+    {
+      "text": "Back then, programming felt less like a creative outlet and more like an academic obligation.",
+      "image": "github.png",
+      "alt": "Books"
+    },
+    {
+      "text": "After graduating, I chose to reset my perspective.",
+      "image": "html.png",
+      "alt": "Reset"
+    },
+    {
+      "text": "I stripped away the coursework and dove into Python and JavaScript on my own terms.",
+      "image": "python.png",
+      "alt": "Python and JavaScript"
+    },
+    {
+      "text": "That's when everything clicked.",
+      "image": "kaka.png",
+      "alt": "Idea"
+    },
+    {
+      "text": "JavaScript instantly became my primary language. It's fast, flexible, and perfectly suited for the types of architectures I love to build.",
+      "image": "javascript.png",
+      "alt": "JavaScript"
+    },
+    {
+      "text": "I build with vanilla HTML, CSS, JavaScript, and Node.js (Express).",
+      "image": "stack.png",
+      "alt": "Tech stack"
+    },
+    {
+      "text": "While the industry rushes to adopt heavy, bloated frameworks, I choose to master the core fundamentals first.",
+      "image": "foundation.png",
+      "alt": "Foundation"
+    },
+    {
+      "text": "I write lightweight, efficient code because I care about understanding exactly how software works under the hood.",
+      "image": "gear.png",
+      "alt": "Gear"
+    },
+    {
+      "text": "For me, tools like AI aren't a threat or a shortcut—they are a force multiplier for rapid learning, experimentation, and debugging. ",
+      "image": "robot.png",
+      "alt": "AI"
+    },
+    {
+      "text": "I thrive on breaking things, fixing them, and building fast.",
+      "image": "hammer.png",
+      "alt": "Builder"
+    },
+    {
+      "text": "When I’m away from the keyboard, I’m usually hanging out with my two cats, gaming, reading, or sketching.",
+      "image": "cats.png",
+      "alt": "Cats"
+    }
+  ]
+},
 "successMessage": {
     "myTitle": "Title",
     "myMessage": "Message sent successfully. Click the arrow to return to the Home page.",

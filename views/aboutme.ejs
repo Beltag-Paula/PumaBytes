@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= myTitle %></title>
+    <title>
+        <%= myTitle %>
+    </title>
+
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/aboutAnimation.css">
 </head>
+
 <body>
 
     <div class="finalClass">
@@ -14,19 +20,39 @@
         </div>
 
         <main class="mainClass about-main">
+
             <div class="image-container">
+
                 <img src="/images/rawrcontact.png" alt="kitty hunting you" id="about-img">
+
+                <div id="hover-film" class="xray-film">
+
+                    <span class="film-plus">+</span>
+
+                    <img id="hover-img" src="" alt="">
+
+                </div>
+
             </div>
 
             <div class="textClass">
-                <h1 class="about-heading"><%= myIntro %></h1>
-                
+                <h1 class="about-heading">
+                    <%= myIntro %>
+                </h1>
+
                 <div class="about-story">
-                    <% myText.forEach(paragraph => { %>
-                        <p class="story-p"><%= paragraph %></p>
-                    <% }); %>
+
+                    <% myText.forEach(item=> { %>
+
+                        <p class="story-p" data-image="/images/<%= item.image %>">
+                            <%= item.text %>
+                        </p>
+
+                        <% }) %>
+
                 </div>
             </div>
+
         </main>
 
         <div class="footerClass">
@@ -34,5 +60,8 @@
         </div>
     </div>
 
+    <script src="/js/about.js"></script>
+
 </body>
+
 </html>

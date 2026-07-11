@@ -25,29 +25,29 @@ const packageVersion = require("./package.json").version;
 // Cache GitHub data 
 // ---------------------------
 
-let githubProfile = null;
-let featuredRepos = [];
+ let githubProfile = null;
+ let featuredRepos = [];
 
-async function refreshGithubData() {
-    try {
-        const githubResponse = await fetch(
-            `https://api.github.com/users/${process.env.GITHUB_USERNAME}`
-        );
+// async function refreshGithubData() {
+//     try {
+//         const githubResponse = await fetch(
+//             `https://api.github.com/users/${process.env.GITHUB_USERNAME}`
+//         );
 
-        githubProfile = await githubResponse.json();
-        featuredRepos = await getFeaturedRepos();
+//         githubProfile = await githubResponse.json();
+//         featuredRepos = await getFeaturedRepos();
 
-        console.log("GitHub data refreshed.");
-    } catch (err) {
-        console.error("Failed to refresh GitHub data:", err);
-    }
-}
+//         console.log("GitHub data refreshed.");
+//     } catch (err) {
+//         console.error("Failed to refresh GitHub data:", err);
+//     }
+// }
 
-// Initial fetch
-refreshGithubData();
+// // Initial fetch
+// refreshGithubData();
 
-// Refresh every hour
-setInterval(refreshGithubData, 60 * 60 * 1000);
+// // Refresh every hour
+// setInterval(refreshGithubData, 60 * 60 * 1000);
 
 // Make GitHub profile available in every request
 app.use((req, res, next) => {

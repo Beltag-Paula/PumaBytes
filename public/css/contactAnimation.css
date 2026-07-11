@@ -1,0 +1,88 @@
+.image-container{
+    animation: flyInLeft .8s cubic-bezier(.17,.89,.32,1.28) forwards;
+}
+
+.contact-form-container{
+    opacity: 0;
+    animation: flyInBottom .9s cubic-bezier(.17,.89,.32,1.28) .25s forwards;
+}
+
+@keyframes flyInLeft{
+    0%{
+        opacity:0;
+        transform:translateX(-150%) rotate(-12deg) scale(.7);
+    }
+
+    70%{
+        opacity:1;
+        transform:translateX(20px) rotate(3deg) scale(1.05);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateX(0) rotate(0) scale(1);
+    }
+}
+
+@keyframes flyInBottom{
+    0%{
+        opacity:0;
+        transform:translateY(120%) scale(.8);
+    }
+
+    80%{
+        opacity:1;
+        transform:translateY(-10px) scale(1.03);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+.submit-button{
+    transition:.15s;
+}
+
+.submit-button:hover{
+    transform:scale(1.08);
+}
+
+.submit-button:active{
+    transform:scale(.94);
+}
+
+input,
+textarea{
+    transition:.2s;
+}
+
+input:focus,
+textarea:focus{
+    transform:scale(1.02);
+}
+
+.contact-heading{
+    animation: flyInTop .5s .1s both;
+}
+
+.form-group:nth-child(1){
+    animation: flyInRight .45s .25s both;
+}
+
+.form-group:nth-child(2){
+    animation: flyInRight .45s .40s both;
+}
+
+.form-group:nth-child(3){
+    animation: flyInRight .45s .55s both;
+}
+
+.form-group:nth-child(4){
+    animation: flyInRight .45s .70s both;
+}
+
+.submit-button{
+    animation: zoomIn .5s .9s both;
+}
