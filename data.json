@@ -20,11 +20,11 @@
 
   ],
   "navigation": [
-    { "id": "public0", "title": "About Me", "url": "/aboutme", "img": "/images/aboutme.png" },
+    { "id": "public0", "title": "About Me", "url": "/aboutme", "img": "/images/me.png" },
     { "id": "public1", "title": "GitHub", "url": "https://github.com/Beltag-Paula", "img": "/images/github.png" },
     { "id": "public2", "title": "LinkedIn", "url": "https://www.linkedin.com/in/paula-beltag-6976781b8/", "img": "/images/linkedin.png"},
     { "id": "public3", "title": "Youtube", "url": "https://youtube.com/@pumabytes", "img": "/images/youtube.png"},
-    { "id": "public4", "title": "Blog", "url": "/blog", "img": "/images/blog.png" },
+    { "id": "public4", "title": "🐈", "url": "/blog", "img": "/images/aboutme.png" },
     { "id": "public5", "title": "Contact", "url": "/contact", "img": "/images/contact.png" }
   ],
 "about": {
