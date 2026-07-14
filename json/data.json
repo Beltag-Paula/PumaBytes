@@ -7,7 +7,8 @@
     },
 
     "blog":{
-        "myTitle": "BlogPage"
+        "myTitle": "BlogPage",
+        "myMessage": "In construction... Pet the kitty to return to the Home page."
     },
 
     "projects": [
@@ -99,4 +100,6 @@
     "myMessage": "Message sent successfully. Click the arrow to return to the Home page.",
     "img": "/images/arrrow.png"
 }
+
+
 }

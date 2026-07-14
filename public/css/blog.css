@@ -1,0 +1,208 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------- Layout ---------- */
+
+.mainClass {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    padding: 40px 20px;
+}
+
+.cat-link {
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cat-link .container {
+    transition: transform .2s ease;
+}
+
+.cat-link:hover .container {
+    transform: scale(1.05);
+}
+
+.cat-link:active .container {
+    transform: scale(.95);
+}
+
+/* ---------- Cat Container ---------- */
+
+.container {
+    width: 350px;
+    height: 200px;
+    position: relative;
+}
+
+/* ---------- Cat ---------- */
+
+.cat {
+    background-color: #f19b1a;
+    height: 65px;
+    width: 80px;
+    border-radius: 0 80px 80px 0;
+    position: absolute;
+    bottom: 60px;
+    right: 50px;
+}
+
+.ear {
+    height: 15px;
+    width: 15px;
+    background-color: #f19b1a;
+    position: absolute;
+    bottom: 64px;
+    left: 8px;
+    border-radius: 20px 0 0 0;
+    box-shadow: 25px 0 #f19b1a;
+}
+
+.eye,
+.eye:before {
+    height: 7px;
+    width: 10px;
+    border: 2px solid #2c2c2c;
+    border-top: none;
+    border-radius: 0 0 15px 15px;
+    position: absolute;
+}
+
+.eye {
+    top: 18px;
+    left: 15px;
+}
+
+.eye:before {
+    content: "";
+    left: 30px;
+}
+
+.nose {
+    background: #fff;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    position: absolute;
+    top: 32px;
+    left: 25px;
+    box-shadow: 12px 0 #fff;
+}
+
+.nose:before {
+    content: "";
+    width: 12px;
+    height: 8px;
+    background: #fff;
+    position: absolute;
+    left: 6px;
+}
+
+.nose:after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    bottom: 7px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid #ef926b;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+}
+
+.mouth {
+    background: #2c2c2c;
+    height: 15px;
+    width: 17px;
+    position: absolute;
+    top: 38px;
+    left: 27px;
+    border-radius: 0 0 5px 5px;
+    transform-origin: top;
+    animation: mouth-move 2s infinite;
+}
+
+@keyframes mouth-move {
+    50% {
+        transform: scaleY(.7);
+    }
+}
+
+.body {
+    background: #f19b1a;
+    height: 90px;
+    width: 140px;
+    position: absolute;
+    right: 65px;
+    bottom: 0;
+    border-radius: 60px 60px 0 0;
+    transform-origin: bottom right;
+    animation: sleep 2s infinite;
+}
+
+@keyframes sleep {
+    50% {
+        transform: scale(.9, 1.05);
+    }
+}
+
+.body:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 22px;
+    width: 30px;
+    height: 12px;
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 45px 0 #fff;
+}
+
+.tail {
+    background: #d07219;
+    height: 20px;
+    width: 100px;
+    position: absolute;
+    right: 150px;
+    bottom: 0;
+    border-radius: 20px 0 0 20px;
+}
+
+.bubble {
+    height: 20px;
+    width: 20px;
+    background: rgba(255,255,255,.4);
+    border-radius: 50px 50px 50px 5px;
+    position: absolute;
+    left: 65px;
+    top: 20px;
+    animation: bubble-scale 2s infinite;
+}
+
+@keyframes bubble-scale {
+    50% {
+        transform: scale(1.6);
+    }
+}
+
+.shadow {
+    height: 10px;
+    width: 240px;
+    background: rgba(0,0,0,.2);
+    border-radius: 10px;
+    position: absolute;
+    bottom: 52px;
+    left: 70px;
+    animation: shadow 2s infinite;
+}
+
+@keyframes shadow {
+    50% {
+        transform: scaleX(.7);
+    }
+}

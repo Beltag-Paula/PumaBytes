@@ -1,25 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= myTitle %></title>
+
     <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/blog.css">
 </head>
+
 <body>
 
     <div class="finalClass">
+
         <div class="headerClass">
             <%- include('partials/hamburgerMenu') %>
         </div>
 
         <main class="mainClass">
+
+            <h1><%= myMessage %></h1>
+
+            <a href="/" class="cat-link" aria-label="Return to Home">
+
+                <div class="container">
+
+                    <div class="shadow"></div>
+
+                    <div class="cat">
+                        <div class="ear"></div>
+                        <div class="eye"></div>
+                        <div class="mouth"></div>
+                        <div class="nose"></div>
+                        <div class="tail"></div>
+                        <div class="body"></div>
+                        <div class="bubble"></div>
+                    </div>
+
+                </div>
+
+            </a>
+
         </main>
 
         <div class="footerClass">
             <%- include('partials/footer') %>
         </div>
+
     </div>
 
 </body>
+
 </html>

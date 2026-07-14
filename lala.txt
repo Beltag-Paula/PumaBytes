@@ -7,7 +7,7 @@ const fs = require("fs");
 const path = require("path");
 const nodemailer = require("nodemailer");
 
-const { getGithubDataFromJsonFile, fetchAndWriteGithubData } = require("./controllers/githubController");
+const { getFeaturedRepos } = require("./controllers/githubController");
 
 const PORT = process.env.PORT || 8000;
 
@@ -15,20 +15,43 @@ app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-const dataPath = path.join(__dirname, "json", "data.json");
+const dataPath = path.join(__dirname, "data.json");
 const rawData = fs.readFileSync(dataPath, "utf8");
 const data = JSON.parse(rawData);
 
 const packageVersion = require("./package.json").version;
 
-// // Refresh every hour
-setInterval(fetchAndWriteGithubData, 60 * 60 * 1000);
+// ---------------------------
+// Cache GitHub data 
+// ---------------------------
+
+ let githubProfile = null;
+ let featuredRepos = [];
+
+async function refreshGithubData() {
+    try {
+        const githubResponse = await fetch(
+            `https://api.github.com/users/${process.env.GITHUB_USERNAME}`
+        );
+
+        githubProfile = await githubResponse.json();
+        featuredRepos = await getFeaturedRepos();
+
+        console.log("GitHub data refreshed.");
+    } catch (err) {
+        console.error("Failed to refresh GitHub data:", err);
+    }
+}
+
+// Initial fetch
+refreshGithubData();
+
+// Refresh every hour
+setInterval(refreshGithubData, 60 * 60 * 1000);
 
 // Make GitHub profile available in every request
-app.use(async (req, res, next) => {
-    const { githubProfile, featuredRepos } = await getGithubDataFromJsonFile();
-    req.githubProfile = githubProfile;
-    req.featuredRepos = featuredRepos;
+app.use((req, res, next) => {
+    req.ghData = githubProfile;
     next();
 });
 
@@ -46,9 +69,9 @@ app.get("/", (req, res) => {
         myTitle: data.index.myTitle,
         projects: data.projects,
         navigation: data.navigation,
-        repos: req.featuredRepos,
+        repos: featuredRepos,
         packageVersion,
-        realName: req.githubProfile?.name || "",
+        realName: req.ghData?.name || "",
     });
 });
 
@@ -58,16 +81,15 @@ app.get("/aboutme", (req, res) => {
         myIntro: data.about.myIntro,
         myText: data.about.myText,
         packageVersion,
-        realName: req.githubProfile?.name || "",
+        realName: req.ghData?.name || "",
     });
 });
 
 app.get("/blog", (req, res) => {
     res.render("blog", {
         myTitle: data.blog.myTitle,
-        myMessage: data.blog.myMessage,
         packageVersion,
-        realName: req.githubProfile?.name || "",
+        realName: req.ghData?.name || "",
     });
 });
 
@@ -75,7 +97,7 @@ app.get("/contact", (req, res) => {
     res.render("contact", {
         myTitle: data.contact.myTitle,
         packageVersion,
-        realName: req.githubProfile?.name || "",
+        realName: req.ghData?.name || "",
     });
 });
 
@@ -109,14 +131,11 @@ app.post("/contact", (req, res) => {
             myMessage: data.successMessage.myMessage,
             img: data.successMessage.img,
             packageVersion,
-            realName: req.githubProfile?.name || "",
+            realName: req.ghData?.name || "",
         });
     });
 });
 
-
-getGithubDataFromJsonFile().then(() => {
-    app.listen(PORT, () => {
-        console.log(`Server running at http://localhost:${PORT}`);
-    });
-})
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});

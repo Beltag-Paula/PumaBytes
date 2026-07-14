@@ -1,9 +1,14 @@
 require("dotenv").config();
 
 const USERNAME = process.env.GITHUB_USERNAME;
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 
 const selectRepos = strategy => repos => strategy(repos);
+const fs = require('fs/promises');
+const path = require("path");
 
+const githubProfilePath = path.join(__dirname, "../json", "githubProfile.json");
+const featuredReposPath = path.join(__dirname, "../json", "featuredRepos.json");
 const first5LiveThenRecent = repos => {
 
     const filtered = repos.filter(repo => repo.name !== "PumaBytes");
@@ -36,7 +41,7 @@ async function getDemoImages(repoName) {
 
     try {
 
-        const response = await fetch(
+        const response = await authorizedFetch(
             `https://api.github.com/repos/${USERNAME}/${repoName}/contents/images_demo`
         );
 
@@ -69,13 +74,23 @@ async function getDemoImages(repoName) {
 
 }
 
+const authorizedFetch = (url) => fetch(
+    url,
+    {
+        headers: {
+            'Authorization': `Bearer ${GITHUB_TOKEN}`,
+        }
+    }
+);
+
 async function getFeaturedRepos() {
 
-    const response = await fetch(
-        `https://api.github.com/users/${USERNAME}/repos`
+    const response = await authorizedFetch(
+        `https://api.github.com/users/${USERNAME}/repos`,
     );
 
     const repos = (await response.json()).map(repo => ({
+        id: repo.id,
         name: repo.name,
         description: repo.description,
         live_code_url: repo.homepage,
@@ -92,9 +107,54 @@ async function getFeaturedRepos() {
             images: await getDemoImages(repo.name)
         }))
     );
-
 }
 
+async function fetchAndWriteGithubData() {
+    try {
+        const githubResponse = await authorizedFetch(
+            `https://api.github.com/users/${process.env.GITHUB_USERNAME}`
+        );
+
+        const githubProfile = await githubResponse.json();
+        try {
+            await fs.writeFile(githubProfilePath, JSON.stringify(githubProfile));
+            console.log('File written successfully');
+        } catch (err) {
+            console.error('Error writing file:', err);
+        }
+        const featuredRepos = await getFeaturedRepos();
+        try {
+            await fs.writeFile(featuredReposPath, JSON.stringify(featuredRepos));
+            console.log('File written successfully');
+        } catch (err) {
+            console.error('Error writing file:', err);
+        }
+        return { featuredRepos, githubProfile };
+        console.log("GitHub data refreshed.");
+    } catch (err) {
+        console.error("Failed to refresh GitHub data:", err);
+    }
+}
+
+
+async function getGithubDataFromJsonFile() {
+    try {
+
+        const access = await fs.stat(githubProfilePath);
+        if (access) {
+            const githubProfile = await fs.readFile(githubProfilePath, { encoding: 'utf-8' });
+            const featuredRepos = await fs.readFile(featuredReposPath, { encoding: 'utf-8' });
+
+            return { featuredRepos: JSON.parse(featuredRepos), githubProfile: JSON.parse(githubProfile) };
+        }
+    } catch (ex) {
+        console.error('Files not found, requesting them', ex)
+    }
+
+    return await fetchAndWriteGithubData();
+
+}
 module.exports = {
-    getFeaturedRepos
+    getGithubDataFromJsonFile,
+    fetchAndWriteGithubData
 };
