@@ -348,6 +348,7 @@ h1 {
 
 .drawer-section a,
 .drawer-section .mobile-project-btn {
+    
     display: flex;
     align-items: center;
     justify-content: flex-start;
