@@ -419,6 +419,8 @@
     right: 30px;
 }
 
+
+
 /* Make sure mobile layout stacks nicely or hides if too small */
 @media (max-width: 768px) {
     .lightbox-nav {

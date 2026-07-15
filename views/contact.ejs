@@ -6,6 +6,7 @@
     <title><%= myTitle %></title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/contactAnimation.css">
+    <link rel="stylesheet" href="/css/modal.css">
 </head>
 <body>
 
@@ -22,7 +23,7 @@
                 </div>
 
                 <div class="contact-form-container">
-                    <h2 class="contact-heading">// INITIATE_CONTACT</h2>
+                    <h2 class="contact-heading">INITIATE_CONTACT</h2>
                     
                     <form id="contactForm" action="/contact" method="POST">
                         <div class="form-group">
@@ -60,6 +61,10 @@
             <%- include('partials/footer') %>
         </div>
     </div>
+
+    <%- include('partials/projectModal') %>
+
+    <script src="/js/index.js"></script>
 
 </body>
 </html>

@@ -57,6 +57,10 @@ app.get("/aboutme", (req, res) => {
         myTitle: data.about.myTitle,
         myIntro: data.about.myIntro,
         myText: data.about.myText,
+        
+                projects: data.projects,
+        repos: req.featuredRepos,
+
         packageVersion,
         realName: req.githubProfile?.name || "",
     });
@@ -67,6 +71,8 @@ app.get("/blog", (req, res) => {
         myTitle: data.blog.myTitle,
         myMessage: data.blog.myMessage,
         packageVersion,
+                projects: data.projects,
+        repos: req.featuredRepos,
         realName: req.githubProfile?.name || "",
     });
 });
@@ -75,6 +81,8 @@ app.get("/contact", (req, res) => {
     res.render("contact", {
         myTitle: data.contact.myTitle,
         packageVersion,
+                projects: data.projects,
+        repos: req.featuredRepos,
         realName: req.githubProfile?.name || "",
     });
 });
@@ -108,6 +116,8 @@ app.post("/contact", (req, res) => {
             myTitle: data.successMessage.myTitle,
             myMessage: data.successMessage.myMessage,
             img: data.successMessage.img,
+                    projects: data.projects,
+        repos: req.featuredRepos,
             packageVersion,
             realName: req.githubProfile?.name || "",
         });

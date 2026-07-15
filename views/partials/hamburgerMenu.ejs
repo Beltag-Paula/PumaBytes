@@ -10,25 +10,37 @@
             <span>MENU.EXE</span>
             <button class="drawer-close">&times;</button>
         </div>
-        
+
         <div class="drawer-content">
             <div class="drawer-section">
-                <h3>// PROJECTS</h3>
-                <a href="/project0">Project #0</a>
-                <a href="/project1">Project #1</a>
-                <a href="/project2">Project #2</a>
-                <a href="/project3">Project #3</a>
-                <a href="/project4">Project #4</a>
-                <a href="/project5">Project #5</a>
+                <h3>PROJECTS</h3>
+
+                <% projects.forEach((project, index)=> { %>
+                    <% const repo=repos[index]; %>
+
+                        <button type="button" class="project-btn mobile-project-btn" data-preview="<%= project.img %>"
+                            data-title="<%= repo ? repo.name : project.title %>"
+                            data-description="<%= repo ? repo.description : '' %>"
+                            data-live="<%= repo ? repo.live_code_url : '' %>"
+                            data-github="<%= repo ? repo.repo_url : '' %>"
+                            data-images='<%- JSON.stringify(repo ? repo.images : []) %>'>
+
+                            <%= project.title %>
+
+                        </button>
+
+                        <% }) %>
+
             </div>
-            
+
             <div class="drawer-section">
-                <h3>// NAVIGATION</h3>
+                <h3> NAVIGATION</h3>
                 <a href="/aboutme">About Me</a>
                 <a href="https://github.com/Beltag-Paula" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a href="/blog">Blog</a>
                 <a href="https://www.youtube.com/@pumabytes" target="_blank" rel="noopener noreferrer">YouTube</a>
-                <a href="https://www.linkedin.com/in/paula-beltag-6976781b8/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://www.linkedin.com/in/paula-beltag-6976781b8/" target="_blank"
+                    rel="noopener noreferrer">LinkedIn</a>
                 <a href="/contact">Contact</a>
             </div>
         </div>
