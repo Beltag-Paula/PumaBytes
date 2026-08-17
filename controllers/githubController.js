@@ -113,7 +113,7 @@ async function fetchAndWriteGithubData() {
     const githubResponse = await authorizedFetch(
       `https://api.github.com/users/${process.env.GITHUB_USERNAME}`,
     );
-    if (!response.ok) {
+    if (!githubResponse.ok) {
       console.error(
         `Failed to githubProfile. StatusCode: ${response.status}, Text: ${response.statusText}`,
       );
