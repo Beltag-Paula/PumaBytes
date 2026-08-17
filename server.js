@@ -7,7 +7,10 @@ const fs = require("fs");
 const path = require("path");
 const nodemailer = require("nodemailer");
 
-const { getGithubDataFromJsonFile, fetchAndWriteGithubData } = require("./controllers/githubController");
+const {
+  getGithubDataFromJsonFile,
+  fetchAndWriteGithubData,
+} = require("./controllers/githubController");
 
 const PORT = process.env.PORT || 8000;
 
@@ -25,76 +28,75 @@ const packageVersion = require("./package.json").version;
 setInterval(fetchAndWriteGithubData, 60 * 60 * 1000);
 
 // Make GitHub profile available in every request
-app.use(async (req, res, next) => {
-    const { githubProfile, featuredRepos } = await getGithubDataFromJsonFile();
-    req.githubProfile = githubProfile;
-    req.featuredRepos = featuredRepos;
-    next();
+app.use(async (req, _res, next) => {
+  const { githubProfile, featuredRepos } = await getGithubDataFromJsonFile();
+  req.githubProfile = githubProfile;
+  req.featuredRepos = featuredRepos;
+  next();
 });
 
 const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-        user: process.env.SENDER_USER,
-        pass: process.env.SENDER_PASS,
-    },
+  service: "gmail",
+  auth: {
+    user: process.env.SENDER_USER,
+    pass: process.env.SENDER_PASS,
+  },
 });
 
-
 app.get("/", (req, res) => {
-    res.render("index", {
-        myTitle: data.index.myTitle,
-        projects: data.projects,
-        navigation: data.navigation,
-        repos: req.featuredRepos,
-        packageVersion,
-        realName: req.githubProfile?.name || "",
-    });
+  res.render("index", {
+    myTitle: data.index.myTitle,
+    projects: data.projects,
+    navigation: data.navigation,
+    repos: req.featuredRepos,
+    packageVersion,
+    realName: req.githubProfile?.name || "",
+  });
 });
 
 app.get("/aboutme", (req, res) => {
-    res.render("aboutme", {
-        myTitle: data.about.myTitle,
-        myIntro: data.about.myIntro,
-        myText: data.about.myText,
-        
-                projects: data.projects,
-        repos: req.featuredRepos,
+  res.render("aboutme", {
+    myTitle: data.about.myTitle,
+    myIntro: data.about.myIntro,
+    myText: data.about.myText,
 
-        packageVersion,
-        realName: req.githubProfile?.name || "",
-    });
+    projects: data.projects,
+    repos: req.featuredRepos,
+
+    packageVersion,
+    realName: req.githubProfile?.name || "",
+  });
 });
 
 app.get("/blog", (req, res) => {
-    res.render("blog", {
-        myTitle: data.blog.myTitle,
-        myMessage: data.blog.myMessage,
-        packageVersion,
-                projects: data.projects,
-        repos: req.featuredRepos,
-        realName: req.githubProfile?.name || "",
-    });
+  res.render("blog", {
+    myTitle: data.blog.myTitle,
+    myMessage: data.blog.myMessage,
+    packageVersion,
+    projects: data.projects,
+    repos: req.featuredRepos,
+    realName: req.githubProfile?.name || "",
+  });
 });
 
 app.get("/contact", (req, res) => {
-    res.render("contact", {
-        myTitle: data.contact.myTitle,
-        packageVersion,
-                projects: data.projects,
-        repos: req.featuredRepos,
-        realName: req.githubProfile?.name || "",
-    });
+  res.render("contact", {
+    myTitle: data.contact.myTitle,
+    packageVersion,
+    projects: data.projects,
+    repos: req.featuredRepos,
+    realName: req.githubProfile?.name || "",
+  });
 });
 
 app.post("/contact", (req, res) => {
-    const { name, email, phone, message } = req.body;
+  const { name, email, phone, message } = req.body;
 
-    const mailOptions = {
-        from: process.env.SENDER_USER,
-        to: process.env.EMAIL_USER,
-        subject: `New Contact Form Submission from ${name}`,
-        html: `
+  const mailOptions = {
+    from: process.env.SENDER_USER,
+    to: process.env.EMAIL_USER,
+    subject: `New Contact Form Submission from ${name}`,
+    html: `
             <h3>New Message Details:</h3>
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Email:</strong> ${email}</p>
@@ -102,31 +104,30 @@ app.post("/contact", (req, res) => {
             <p><strong>Message:</strong></p>
             <p>${message}</p>
         `,
-    };
+  };
 
-    transporter.sendMail(mailOptions, (error, info) => {
-        if (error) {
-            console.error("Error sending email:", error);
-            return res.status(500).send("Something went wrong.");
-        }
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.error("Error sending email:", error);
+      return res.status(500).send("Something went wrong.");
+    }
 
-        console.log("Email sent:", info.response);
+    console.log("Email sent:", info.response);
 
-        res.render("successMessage", {
-            myTitle: data.successMessage.myTitle,
-            myMessage: data.successMessage.myMessage,
-            img: data.successMessage.img,
-                    projects: data.projects,
-        repos: req.featuredRepos,
-            packageVersion,
-            realName: req.githubProfile?.name || "",
-        });
+    res.render("successMessage", {
+      myTitle: data.successMessage.myTitle,
+      myMessage: data.successMessage.myMessage,
+      img: data.successMessage.img,
+      projects: data.projects,
+      repos: req.featuredRepos,
+      packageVersion,
+      realName: req.githubProfile?.name || "",
     });
+  });
 });
 
-
 getGithubDataFromJsonFile().then(() => {
-    app.listen(PORT, () => {
-        console.log(`Server running at http://localhost:${PORT}`);
-    });
-})
+  app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+  });
+});
