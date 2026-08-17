@@ -35,13 +35,12 @@ const first5LiveThenRecent = (repos) => {
 
 async function getDemoImages(repoName) {
   try {
-    const response = await authorizedFetch(
-      `https://api.github.com/repos/${USERNAME}/${repoName}/contents/images_demo`,
-    );
+    const url = `https://api.github.com/repos/${USERNAME}/${repoName}/contents/images_demo`;
+    const response = await authorizedFetch(url);
 
     if (!response.ok) {
       console.error(
-        `Failed to getDemoImages. StatusCode: ${response.status}, Text: ${response.statusText}`,
+        `Failed to getDemoImages(${url}). StatusCode: ${response.status}, Text: ${response.statusText}`,
       );
       return [];
     }
@@ -75,13 +74,12 @@ const authorizedFetch = (url) =>
   });
 
 async function getFeaturedRepos() {
-  const response = await authorizedFetch(
-    `https://api.github.com/users/${USERNAME}/repos`,
-  );
+  const url = `https://api.github.com/users/${USERNAME}/repos`;
+  const response = await authorizedFetch(url);
 
   if (!response.ok) {
     console.error(
-      `Failed to getFeaturedRepos. StatusCode: ${response.status}, Text: ${response.statusText}`,
+      `Failed to getFeaturedRepos(${url}). StatusCode: ${response.status}, Text: ${response.statusText}`,
     );
     return [];
   }
@@ -110,12 +108,11 @@ async function getFeaturedRepos() {
 
 async function fetchAndWriteGithubData() {
   try {
-    const githubResponse = await authorizedFetch(
-      `https://api.github.com/users/${process.env.GITHUB_USERNAME}`,
-    );
+    const url = `https://api.github.com/users/${process.env.GITHUB_USERNAME}`;
+    const githubResponse = await authorizedFetch(url);
     if (!githubResponse.ok) {
       console.error(
-        `Failed to githubProfile. StatusCode: ${githubResponse.status}, Text: ${githubResponse.statusText}`,
+        `Failed to githubProfile(${url}). StatusCode: ${githubResponse.status}, Text: ${githubResponse.statusText}`,
       );
       return { featuredRepos: [], githubProfile: null };
     }
