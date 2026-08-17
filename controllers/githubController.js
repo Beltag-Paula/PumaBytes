@@ -115,7 +115,7 @@ async function fetchAndWriteGithubData() {
     );
     if (!githubResponse.ok) {
       console.error(
-        `Failed to githubProfile. StatusCode: ${response.status}, Text: ${response.statusText}`,
+        `Failed to githubProfile. StatusCode: ${githubResponse.status}, Text: ${githubResponse.statusText}`,
       );
       return { featuredRepos: [], githubProfile: null };
     }
